@@ -1,27 +1,58 @@
 import inquirer from 'inquirer';
 import fs from 'fs';
 
+const team = []
+
 inquirer.prompt(
     [
         {
             type: 'input',
-            message: "Who do you want to add to the team?",
-            name: 'memberOne',
-            validate: (value) => { 
-                if(value){return true} 
-                else {return "You need to enter a name"}
-            }
+            message: "What is your managers name?",
+            name: 'managerName',
+        },
 
+        {
+            type: 'input',
+            message: "What is the manager's ID number?",
+            name: 'managerId',
+        },
+
+        {
+            type: 'input',
+            message: "What is the manager's email?",
+            name: 'managerEmail',
+        },
+
+        {
+            type: 'input',
+            message: "What is the manager's office number?",
+            name: 'managerOffice',
+        }, 
+
+        {   
+            type: 'checkbox',
+            message: 'Would you like to add a team member?',
+            name: 'newTeam',
+            choices: ["Manager", "Engineer", "Intern", "That's it, Create my Team!"]
         }
     ]
 )
 
+// Manager (ID, email, office number)
+// Engineer (ID, email, github)
+// Inter (ID, email, school)
+
 .then(({
-    memberOne
+    managerName,
+    managerId,
+    managerEmail,
+    managerOffice,
 }) => {
 
-
-console.log(memberOne);
+console.log(managerName);
+console.log(managerId);
+console.log(managerEmail);
+console.log(managerOffice);
 
 
 
@@ -36,7 +67,16 @@ const template =`
     <title>Document</title>
 </head>
 <body>
-    <p>HELLO WORLD</p>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+        ${managerName}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${managerId}</li>
+          <li class="list-group-item">Email: ${managerEmail}</li>
+          <li class="list-group-item">Email: ${managerOffice}</li>
+        </ul>
+      </div>
 </body>
 </html>
 `;
