@@ -1,12 +1,14 @@
 const inquirer = require('inquirer');
 /* import fs from 'fs'; */
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const team = []
+const team = [];
 
 newTeamMember()
 
 function completeTeam() {
-    console.log("Team being created!")
+    console.log(team)
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
@@ -72,11 +74,16 @@ function promptManager() {
         ]
     )
 .then((answer) => {
+
+    const newManager = new Manager(answer.managerName, answer.managerId, answer.managerEmail, answer.managerOffice);
+    team.push(newManager)
+
     if(answer.newTeam == true) {
         newTeamMember()
     } else {
         completeTeam()
     }
+
 })
 }
 
@@ -118,6 +125,9 @@ function promptEngineer() {
         ]
     )
     .then((answer) => {
+        const newEngineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.engineerGithub);
+        team.push(newEngineer)
+
         if(answer.newTeam == true) {
             newTeamMember()
         } else {
@@ -163,14 +173,15 @@ function promptIntern() {
         ]
     )
     .then((answer) => {
+
+        const newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
+        team.push(newIntern);
+        
         if(answer.newTeam == true) {
             newTeamMember()
         } else {
             completeTeam()
         }
-
-        const newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
-        console.log(newIntern);
     })
 }
 
