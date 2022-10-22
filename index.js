@@ -3,56 +3,134 @@ import fs from 'fs';
 
 const team = []
 
-inquirer.prompt(
-    [
-        {
-            type: 'input',
-            message: "What is your Managers name?",
-            name: 'managerName',
-        },
+newTeamMember()
 
-        {
-            type: 'input',
-            message: "What is the Manager's ID number?",
-            name: 'managerId',
-        },
-
-        {
-            type: 'input',
-            message: "What is the Manager's email?",
-            name: 'managerEmail',
-        },
-
-        {
-            type: 'input',
-            message: "What is the Manager's office number?",
-            name: 'managerOffice',
-        }, 
-
-        {   
-            type: 'checkbox',
-            message: 'Would you like to add a team member?',
-            name: 'newTeam',
-            choices: ["Manager", "Engineer", "Intern", "That's it, Create my Team!"],
-        }
-    ]
-)
-.then((answers) => {
-    if (answers.newTeam == "Engineer") {
-      inquirer.prompt([
-        {
-            type: 'input',
-            message: "What is your Engineer's name?",
-            name: 'engineerName',
-        },
-      ])
+function newTeamMember() {
+    inquirer.prompt(
+        [
+            {   
+                type: 'checkbox',
+                message: 'Would you like to add a team member?',
+                name: 'newTeam',
+                choices: ["Manager", "Engineer", "Intern", "That's it, Create my Team!"],
+            }
+        ]
+    )
+.then((answer) => {
+    if(answer.newTeam == "Manager") {
+        manager();
+    } else if (answer.newTeam == "Engineer") {
+        engineer();
+    } else if (answer.newTeam == "Intern") {
+        intern();
+    } else if (answer.newTeam == "That's it, Create my Team!") {
+        console.log("Team being created!")
     }
 })
+}
 
 
+
+
+// Manager Prompt Function
+function manager() {
+    inquirer.prompt(
+        [
+            {
+                type: 'input',
+                message: "What is your Managers name?",
+                name: 'managerName',
+            },
+
+            {
+                type: 'input',
+                message: "What is the Manager's ID number?",
+                name: 'managerId',
+            },
+
+            {
+                type: 'input',
+                message: "What is the Manager's email?",
+                name: 'managerEmail',
+            },
+
+            {
+                type: 'input',
+                message: "What is the Manager's office number?",
+                name: 'managerOffice',  
+            }, 
+        ]
+    )
+}
+// Engineer Prompt Function
+function engineer() {
+    inquirer.prompt(
+        [
+            {
+                type: 'input',
+                message: "What is your Engineer's name?",
+                name: 'engineerName',
+            },
+
+            {
+                type: 'input',
+                message: "What is the Engineer's ID number?",
+                name: 'engineerId',
+            },
+  
+            {
+                type: 'input',
+                message: "What is the Engineer's email?",
+                name: 'engineerEmail',
+            },
+  
+            {
+                type: 'input',
+                message: "What is the Engineer's GitHub?",
+                name: 'engineerGithub',
+            },
+        ]
+    )
+}
+// Intern prompt function
+function intern() {
+    inquirer.prompt(
+        [
+            {
+                type: 'input',
+                message: "What is your Intern's name?",
+                name: 'internName',
+            },
+
+            {
+                type: 'input',
+                message: "What is the Intern's ID number?",
+                name: 'internId',
+            },
+  
+            {
+                type: 'input',
+                message: "What is the Engineer's email?",
+                name: 'internEmail',
+            },
+  
+            {
+                type: 'input',
+                message: "What is the Engineer's school?",
+                name: 'internSchool',
+            },
+        ]
+    )
+}
+
+
+
+/* 
+.then((answers) => {
+    */
 // Manager (ID, email, office number)
 // Engineer (ID, email, github)
-// Inter (ID, email, school)
+// Intern (ID, email, school)
 
 /* .then((
     {
