@@ -1,6 +1,6 @@
-import inquirer from 'inquirer';
-import fs from 'fs';
-
+const inquirer = require('inquirer');
+/* import fs from 'fs'; */
+const Intern = require("./lib/Intern");
 const team = []
 
 newTeamMember()
@@ -24,11 +24,11 @@ function newTeamMember() {
     )
 .then((answer) => {
     if(answer.newTeamMember == "Manager") {
-        manager();
+        promptManager();
     } else if (answer.newTeamMember == "Engineer") {
-        engineer();
+        promptEngineer();
     } else if (answer.newTeamMember == "Intern") {
-        intern();
+        promptIntern();
     } else if (answer.newTeamMember == "That's it, Create my Team!") {
         console.log("Team being created!")
     }
@@ -36,9 +36,8 @@ function newTeamMember() {
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
-
 // Manager Prompt Function
-function manager() {
+function promptManager() {
     inquirer.prompt(
         [
             {
@@ -82,10 +81,8 @@ function manager() {
 }
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
-
-
 // Engineer Prompt Function
-function engineer() {
+function promptEngineer() {
     inquirer.prompt(
         [
             {
@@ -131,7 +128,7 @@ function engineer() {
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 // Intern prompt function
-function intern() {
+function promptIntern() {
     inquirer.prompt(
         [
             {
@@ -167,21 +164,16 @@ function intern() {
     )
     .then((answer) => {
         if(answer.newTeam == true) {
-            newTeamMember
+            newTeamMember()
         } else {
             completeTeam()
         }
+
+        const newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
+        console.log(newIntern);
     })
 }
 
-
-
-/* 
-.then((answers) => {
-    */
-// Manager (ID, email, office number)
-// Engineer (ID, email, github)
-// Intern (ID, email, school)
 
 /* .then((
     {
@@ -190,32 +182,6 @@ function intern() {
     managerEmail,
     managerOffice,
 }) => {
-
-const template =`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<body>
-    <div class="card" style="width: 18rem;">
-        <div class="card-header">
-        ${managerName}
-        Manager
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${managerId}</li>
-          <li class="list-group-item">Email: ${managerEmail}</li>
-          <li class="list-group-item">Email: ${managerOffice}</li>
-        </ul>
-      </div>
-</body>
-</html>
-`;
 
     createHtmlFile(template)
 });
