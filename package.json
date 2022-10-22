@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A node application that generates an HTML web page with team members and info about them!",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "test": "tests"
   },
