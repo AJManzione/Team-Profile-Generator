@@ -7,25 +7,25 @@ inquirer.prompt(
     [
         {
             type: 'input',
-            message: "What is your managers name?",
+            message: "What is your Managers name?",
             name: 'managerName',
         },
 
         {
             type: 'input',
-            message: "What is the manager's ID number?",
+            message: "What is the Manager's ID number?",
             name: 'managerId',
         },
 
         {
             type: 'input',
-            message: "What is the manager's email?",
+            message: "What is the Manager's email?",
             name: 'managerEmail',
         },
 
         {
             type: 'input',
-            message: "What is the manager's office number?",
+            message: "What is the Manager's office number?",
             name: 'managerOffice',
         }, 
 
@@ -33,28 +33,34 @@ inquirer.prompt(
             type: 'checkbox',
             message: 'Would you like to add a team member?',
             name: 'newTeam',
-            choices: ["Manager", "Engineer", "Intern", "That's it, Create my Team!"]
+            choices: ["Manager", "Engineer", "Intern", "That's it, Create my Team!"],
         }
     ]
 )
+.then((answers) => {
+    if (answers.newTeam == "Engineer") {
+      inquirer.prompt([
+        {
+            type: 'input',
+            message: "What is your Engineer's name?",
+            name: 'engineerName',
+        },
+      ])
+    }
+})
+
 
 // Manager (ID, email, office number)
 // Engineer (ID, email, github)
 // Inter (ID, email, school)
 
-.then(({
+/* .then((
+    {
     managerName,
     managerId,
     managerEmail,
     managerOffice,
 }) => {
-
-console.log(managerName);
-console.log(managerId);
-console.log(managerEmail);
-console.log(managerOffice);
-
-
 
 const template =`
 <!DOCTYPE html>
@@ -70,6 +76,7 @@ const template =`
     <div class="card" style="width: 18rem;">
         <div class="card-header">
         ${managerName}
+        Manager
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${managerId}</li>
@@ -92,4 +99,4 @@ fs.writeFile(`./index.html`, data, (err)=>{
         console.log(err)
     } console.log("HTML Generated");
 })
-}
+} */
