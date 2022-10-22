@@ -5,32 +5,37 @@ const team = []
 
 newTeamMember()
 
+function completeTeam() {
+    console.log("Team being created!")
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
 function newTeamMember() {
     inquirer.prompt(
         [
             {   
                 type: 'checkbox',
-                message: 'Would you like to add a team member?',
-                name: 'newTeam',
+                message: 'What team member would you like to add?',
+                name: 'newTeamMember',
                 choices: ["Manager", "Engineer", "Intern", "That's it, Create my Team!"],
             }
         ]
     )
 .then((answer) => {
-    if(answer.newTeam == "Manager") {
+    if(answer.newTeamMember == "Manager") {
         manager();
-    } else if (answer.newTeam == "Engineer") {
+    } else if (answer.newTeamMember == "Engineer") {
         engineer();
-    } else if (answer.newTeam == "Intern") {
+    } else if (answer.newTeamMember == "Intern") {
         intern();
-    } else if (answer.newTeam == "That's it, Create my Team!") {
+    } else if (answer.newTeamMember == "That's it, Create my Team!") {
         console.log("Team being created!")
     }
 })
 }
 
-
-
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
 // Manager Prompt Function
 function manager() {
@@ -59,9 +64,26 @@ function manager() {
                 message: "What is the Manager's office number?",
                 name: 'managerOffice',  
             }, 
+
+            {
+                type: 'confirm',
+                message: 'Would you like to add another team member',
+                name: 'newTeam'
+            }
         ]
     )
+.then((answer) => {
+    if(answer.newTeam == true) {
+        newTeamMember()
+    } else {
+        completeTeam()
+    }
+})
 }
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+
 // Engineer Prompt Function
 function engineer() {
     inquirer.prompt(
@@ -89,9 +111,25 @@ function engineer() {
                 message: "What is the Engineer's GitHub?",
                 name: 'engineerGithub',
             },
+
+            {
+                type: 'confirm',
+                message: 'Would you like to add another team member',
+                name: 'newTeam'
+            }
+
         ]
     )
+    .then((answer) => {
+        if(answer.newTeam == true) {
+            newTeamMember()
+        } else {
+            completeTeam()
+        }
+    })
 }
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
 // Intern prompt function
 function intern() {
     inquirer.prompt(
@@ -119,8 +157,21 @@ function intern() {
                 message: "What is the Engineer's school?",
                 name: 'internSchool',
             },
+
+            {
+                type: 'confirm',
+                message: 'Would you like to add another team member',
+                name: 'newTeam'
+            }
         ]
     )
+    .then((answer) => {
+        if(answer.newTeam == true) {
+            newTeamMember
+        } else {
+            completeTeam()
+        }
+    })
 }
 
 
