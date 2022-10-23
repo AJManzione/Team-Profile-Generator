@@ -25,7 +25,16 @@ inquirer.prompt(
     managerName,
     managerID,
     managerEmail,
-    managerOfficeNum
+    managerOfficeNum,
+    engineerName,
+    engineerId,
+    engineerEmail,
+    engineerGithub,
+    internName,
+    internId,
+    internEmail,
+    internSchool
+
 }) => {
 team.forEach(getManagerInfo);
 function getManagerInfo() {
@@ -37,10 +46,68 @@ function getManagerInfo() {
     managerEmail = employeeEmail.email;
     const employeeNum = team[0];
     managerOfficeNum = employeeNum.officeNum;
-
 }
 
-    const template = `
+team.forEach(getEngineerInfo);
+function getEngineerInfo() {
+    const employeeTwo = team[1]
+    if(!employeeTwo) {
+        return;
+    } else { 
+        const employeeTwoName = team[1];
+        engineerName = employeeTwoName.name;
+        const employeeTwoID = team[1];
+        engineerId = employeeTwoID.id;
+        const employeeTwoEmail = team[1];
+        engineerEmail = employeeTwoEmail.email;
+        const employeeTwoGithub = team[1];
+        engineerGithub = employeeTwoGithub.github;
+    }
+}
+
+team.forEach(getInternInfo);
+function getInternInfo() {
+    const employeeThree = team[2];
+    internName = employeeThree.name;
+    const employeeThreeID = team[2];
+    internId = employeeThreeID.id;
+    const employeeThreeEmail = team[2];
+    internEmail = employeeThreeEmail.email;
+    const employeeThreeSchool = team[2];
+    internSchool = employeeThreeSchool.school
+}
+
+
+
+
+
+    const internTemplate = `  
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+        ${internName} <br>
+        Intern
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${internId}</li>
+            <li class="list-group-item" id="link">Email:<a href="mailto:${internEmail}">${internEmail}</a></li>
+            <li class="list-group-item">School: ${internSchool}</li>
+        </ul>
+    </div>`
+
+    const engineerTemplate = `  
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+        ${engineerName} <br>
+        Engineer
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${engineerId}</li>
+            <li class="list-group-item" id="link">Email:<a href="mailto:${engineerEmail}">${engineerEmail}</a></li>
+            <li class="list-group-item">GitHub: ${engineerGithub}</li>
+        </ul>
+    </div>`
+
+    const managerTemplate = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,10 +129,12 @@ function getManagerInfo() {
           <li class="list-group-item">Office #: ${managerOfficeNum}</li>
         </ul>
       </div>
+      ${engineerTemplate}
+      ${internTemplate}
 </body>
 </html>
 `
-    createIndexHtml(template)
+    createIndexHtml(managerTemplate)
     
     function createIndexHtml(data) {
         fs.writeFile("index.html", data, (err) => {
