@@ -1,15 +1,42 @@
 const inquirer = require('inquirer');
-/* import fs from 'fs'; */
+const fs = require('fs')
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Template = require("./lib/generateTeamPage");
+
 const team = [];
 
 newTeamMember()
 
-function completeTeam() {
-    console.log(team)
-}
+function CreateTeam() {
+inquirer.prompt(
+    [
+        {
+            name: 'complete',
+            message: "Press Enter to generate HTML" 
+        }
+    ]
+)
+.then(({
+
+team
+
+}) => {
+    createIndexHtml(Template)
+    
+    function createIndexHtml(data) {
+        fs.writeFile("index.html", data, (err) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("index.html generated!")
+            }
+        })
+    }
+})
+};
+
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -32,7 +59,7 @@ function newTeamMember() {
     } else if (answer.newTeamMember == "Intern") {
         promptIntern();
     } else if (answer.newTeamMember == "That's it, Create my Team!") {
-        console.log("Team being created!")
+        CreateTeam();
     }
 })
 }
@@ -81,7 +108,7 @@ function promptManager() {
     if(answer.newTeam == true) {
         newTeamMember()
     } else {
-        completeTeam()
+        CreateTeam()
     }
 
 })
@@ -131,7 +158,7 @@ function promptEngineer() {
         if(answer.newTeam == true) {
             newTeamMember()
         } else {
-            completeTeam()
+            CreateTeam()
         }
     })
 }
@@ -176,33 +203,13 @@ function promptIntern() {
 
         const newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
         team.push(newIntern);
-        
+
         if(answer.newTeam == true) {
             newTeamMember()
         } else {
-            completeTeam()
+            CreateTeam()
         }
     })
 }
 
 
-/* .then((
-    {
-    managerName,
-    managerId,
-    managerEmail,
-    managerOffice,
-}) => {
-
-    createHtmlFile(template)
-});
-
-function createHtmlFile(data) {
-
-// Filesave code 
-fs.writeFile(`./index.html`, data, (err)=>{
-    if (err){
-        console.log(err)
-    } console.log("HTML Generated");
-})
-} */
