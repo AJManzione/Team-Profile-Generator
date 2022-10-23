@@ -3,27 +3,60 @@ const fs = require('fs')
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Template = require("./lib/generateTeamPage");
 
 const team = [];
 
-newTeamMember()
+promptManager()
 
 function CreateTeam() {
+
 inquirer.prompt(
     [
         {
             name: 'complete',
-            message: "Press Enter to generate HTML" 
+            message: "Press Enter to generate your team!" 
         }
     ]
 )
+
 .then(({
-
-team
-
+    managerName,
+    managerID
 }) => {
-    createIndexHtml(Template)
+team.forEach(getManagerInfo);
+function getManagerInfo() {
+    const employeeName = team[0]
+    managerName = employeeName.name
+    const employeeID = team[0]
+    managerID = employeeID.id
+}
+
+    const template = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+        ${managerName} <br>
+        Manager
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${managerID}</li>
+          <li class="list-group-item">Email:</li>
+          <li class="list-group-item">Email:</li>
+        </ul>
+      </div>
+</body>
+</html>
+`
+    createIndexHtml(template)
     
     function createIndexHtml(data) {
         fs.writeFile("index.html", data, (err) => {
@@ -47,14 +80,12 @@ function newTeamMember() {
                 type: 'checkbox',
                 message: 'What team member would you like to add?',
                 name: 'newTeamMember',
-                choices: ["Manager", "Engineer", "Intern", "That's it, Create my Team!"],
+                choices: [ "Engineer", "Intern", "That's it, Create my Team!"],
             }
         ]
     )
 .then((answer) => {
-    if(answer.newTeamMember == "Manager") {
-        promptManager();
-    } else if (answer.newTeamMember == "Engineer") {
+    if (answer.newTeamMember == "Engineer") {
         promptEngineer();
     } else if (answer.newTeamMember == "Intern") {
         promptIntern();
