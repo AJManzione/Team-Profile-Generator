@@ -8,6 +8,8 @@ const team = [];
 
 promptManager()
 
+
+
 function CreateTeam() {
 
 inquirer.prompt(
@@ -21,14 +23,21 @@ inquirer.prompt(
 
 .then(({
     managerName,
-    managerID
+    managerID,
+    managerEmail,
+    managerOfficeNum
 }) => {
 team.forEach(getManagerInfo);
 function getManagerInfo() {
-    const employeeName = team[0]
-    managerName = employeeName.name
-    const employeeID = team[0]
-    managerID = employeeID.id
+    const employeeName = team[0];
+    managerName = employeeName.name;
+    const employeeID = team[0];
+    managerID = employeeID.id;
+    const employeeEmail = team[0];
+    managerEmail = employeeEmail.email;
+    const employeeNum = team[0];
+    managerOfficeNum = employeeNum.officeNum;
+
 }
 
     const template = `
@@ -49,8 +58,8 @@ function getManagerInfo() {
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${managerID}</li>
-          <li class="list-group-item">Email:</li>
-          <li class="list-group-item">Email:</li>
+          <li class="list-group-item" id="link">Email:<a href="mailto:${managerEmail}">${managerEmail}</a></li>
+          <li class="list-group-item">Office #: ${managerOfficeNum}</li>
         </ul>
       </div>
 </body>
