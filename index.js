@@ -4,6 +4,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const { Console } = require('console');
+const internal = require('stream');
 
 const team = [];
 
@@ -218,9 +219,14 @@ function promptManager() {
         ]
     )
 .then((answer) => {
-
+    managers = [];
     const newManager = new Manager(answer.managerName, answer.managerId, answer.managerEmail, answer.managerOffice);
-    team.push(newManager)
+    managers.push(newManager.getName())
+    managers.push(newManager.getRole())
+    managers.push(newManager.getId())
+    managers.push(newManager.getEmail())
+    managers.push(newManager.getOfficeNum())
+    team.push(managers);
 
     if(answer.newTeam == true) {
         newTeamMember()
@@ -269,9 +275,15 @@ function promptEngineer() {
         ]
     )
     .then((answer) => {
+        const engineers = [];
         const newEngineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.engineerGithub);
-        console.log(newEngineer.getName())
-        
+        engineers.push(newEngineer.getName())
+        engineers.push(newEngineer.getRole())
+        engineers.push(newEngineer.getId())
+        engineers.push(newEngineer.getEmail())
+        engineers.push(newEngineer.getGithub())
+        team.push(engineers)
+
 
         if(answer.newTeam == true) {
             newTeamMember()
@@ -318,9 +330,14 @@ function promptIntern() {
         ]
     )
     .then((answer) => {
-
+        interns = [];
         const newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
-        team.push(newIntern);
+        interns.push(newIntern.getName())
+        interns.push(newIntern.getRole())
+        interns.push(newIntern.getId())
+        interns.push(newIntern.getEmail())
+        interns.push(newIntern.getSchool())
+        team.push(interns);
 
         if(answer.newTeam == true) {
             newTeamMember()
