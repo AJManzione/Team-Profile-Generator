@@ -1,3 +1,4 @@
+// packages required for the program to run - including pre-built 
 const inquirer = require('inquirer');
 const fs = require('fs')
 const Manager = require("./lib/Manager");
@@ -7,6 +8,7 @@ const Intern = require("./lib/Intern");
 const team = [];
 let htmlTemplate = '';
 
+// First thing that happens when you run the program is that the user is prompted to enter manager information
 promptManager()
 
 
@@ -15,6 +17,7 @@ function CreateTeam() {
  
 htmlTemplate = htmlTemplate + ` </body>
 </html>`
+
 inquirer.prompt(
     [
         {
@@ -95,11 +98,11 @@ function promptManager() {
 .then((answer) => {
     managers = [];
     const newManager = new Manager(answer.managerName, answer.managerId, answer.managerEmail, answer.managerOffice);
-    managers.push(newManager.getName())
+    managers.push(newManager.name)
     managers.push(newManager.getRole())
-    managers.push(newManager.getId())
-    managers.push(newManager.getEmail())
-    managers.push(newManager.getOfficeNum())
+    managers.push(newManager.id)
+    managers.push(newManager.email)
+    managers.push(newManager.officeNum)
     team.push(managers);
     htmlTemplate = newManager.getTemplate()
 
@@ -152,10 +155,10 @@ function promptEngineer() {
     .then((answer) => {
         const engineers = [];
         const newEngineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.engineerGithub);
-        engineers.push(newEngineer.getName())
+        engineers.push(newEngineer.name)
         engineers.push(newEngineer.getRole())
-        engineers.push(newEngineer.getId())
-        engineers.push(newEngineer.getEmail())
+        engineers.push(newEngineer.id)
+        engineers.push(newEngineer.email)
         engineers.push(newEngineer.getGithub())
         team.push(engineers)
         htmlTemplate = htmlTemplate + newEngineer.getTemplate()
@@ -208,10 +211,10 @@ function promptIntern() {
     .then((answer) => {
         interns = [];
         const newIntern = new Intern(answer.internName, answer.internId, answer.internEmail, answer.internSchool);
-        interns.push(newIntern.getName())
+        interns.push(newIntern.name)
         interns.push(newIntern.getRole())
-        interns.push(newIntern.getId())
-        interns.push(newIntern.getEmail())
+        interns.push(newIntern.id)
+        interns.push(newIntern.email)
         interns.push(newIntern.getSchool())
         team.push(interns);
         team.push(managers);
