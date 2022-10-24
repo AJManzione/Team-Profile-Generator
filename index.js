@@ -4,9 +4,10 @@ const fs = require('fs')
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-
+const Style = require("./lib/Style");
 const team = [];
 let htmlTemplate = '';
+let styleTemplate = '';
 
 // First thing that happens when you run the program is that the user is prompted to enter manager information
 promptManager()
@@ -15,27 +16,26 @@ promptManager()
 
 function CreateTeam() {
  
-htmlTemplate = htmlTemplate + ` </body>
+htmlTemplate = htmlTemplate + `         </div>
+            </body>
 </html>`
-
-inquirer.prompt(
-    [
-        {
-            name: 'complete',
-            message: "Press Enter to generate your team!" 
-        }
-    ]
-)
 
 data = htmlTemplate;
 
-    fs.writeFile('index.html', data , function (err) {
+    fs.writeFile('./dist/index.html', data , function (err) {
         if (err) throw err;
         console.log('File is created successfully.');
-      });
+    });
 
+
+let getStyle = new Style
+style = getStyle.getStyle()
+    fs.writeFile('./dist/style.css', style, function (errr) {
+        if (errr) throw errr;
+        console.log('File is created successfully.');
+
+    });   
 }
-
 
 function newTeamMember() {
     inquirer.prompt(
