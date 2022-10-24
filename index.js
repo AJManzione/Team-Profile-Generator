@@ -3,6 +3,7 @@ const fs = require('fs')
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const { Console } = require('console');
 
 const team = [];
 
@@ -11,6 +12,8 @@ promptManager()
 
 
 function CreateTeam() {
+
+console.log(team)
 
 inquirer.prompt(
     [
@@ -21,19 +24,15 @@ inquirer.prompt(
     ]
 )
 
+/* const engineerName = team.map(element => element.Engineer)
+console.log(engineersName); */
+
+}
+
+/* 
 .then(({
-    managerName,
-    managerID,
-    managerEmail,
-    managerOfficeNum,
-    engineerName,
-    engineerId,
-    engineerEmail,
-    engineerGithub,
-    internName,
-    internId,
-    internEmail,
-    internSchool
+    
+
 
 }) => {
 team.forEach(getManagerInfo);
@@ -50,19 +49,28 @@ function getManagerInfo() {
 
 team.forEach(getEngineerInfo);
 function getEngineerInfo() {
-    const employeeTwo = team[1]
-    if(!employeeTwo) {
+    for (i = 1; i < team.length - 1; i++) {
+        const employee = employee + [i]
+        employee[i] = team[i]
+    if(!employee[i]) {
         return;
     } else { 
-        const employeeTwoName = team[1];
-        engineerName = employeeTwoName.name;
-        const employeeTwoID = team[1];
-        engineerId = employeeTwoID.id;
-        const employeeTwoEmail = team[1];
-        engineerEmail = employeeTwoEmail.email;
-        const employeeTwoGithub = team[1];
-        engineerGithub = employeeTwoGithub.github;
-    }
+        const employeeName = employeeName[i];
+        employeeName[i] = team[i];
+        engineerName[i] = employeeName[i].name;
+
+        const employeeID = employeeID[i];
+        employeeID[i] = team[i];
+        engineerId[i] = employeeID[i].id;
+
+        const employeeEmail = employeeEmail[i];
+        employeeEmail[i] = team[i];
+        engineerEmail[i] = employeeEmail[i].email;
+
+        const employeeGithub = employeeGithub[i];
+        employeeGithub[i] = team[i];
+        engineerGithub[i] = employeeGithub[i].github;
+    }}
 }
 
 team.forEach(getInternInfo);
@@ -148,7 +156,7 @@ function getInternInfo() {
 })
 };
 
-
+ */
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
 function newTeamMember() {
@@ -262,7 +270,8 @@ function promptEngineer() {
     )
     .then((answer) => {
         const newEngineer = new Engineer(answer.engineerName, answer.engineerId, answer.engineerEmail, answer.engineerGithub);
-        team.push(newEngineer)
+        console.log(newEngineer.getName())
+        
 
         if(answer.newTeam == true) {
             newTeamMember()
