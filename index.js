@@ -13,9 +13,26 @@ let styleTemplate = '';
 promptManager()
 
 
-
 function CreateTeam() {
  
+inquirer.prompt(
+    [
+        {
+            type: 'list',
+            message: "What theme would you like your page to be?!",
+            name: 'theme',
+            choices: ["Red", "Blue", "Green"]
+        }
+    ]
+)
+
+.then((color) => {
+
+let colorChoice = color.theme;
+
+
+
+
 htmlTemplate = htmlTemplate + `         </div>
             </body>
 </html>`
@@ -28,13 +45,15 @@ data = htmlTemplate;
     });
 
 
-let getStyle = new Style
-style = getStyle.getStyle()
+newStyle = new Style(colorChoice)
+style = newStyle.getStyle()
+
     fs.writeFile('./dist/style.css', style, function (errr) {
         if (errr) throw errr;
         console.log('File is created successfully.');
 
-    });   
+    });  
+}); 
 }
 
 function newTeamMember() {
