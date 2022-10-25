@@ -10,8 +10,8 @@ let htmlTemplate = '';
 let styleTemplate = '';
 
 // First thing that happens when you run the program is that the user is prompted to enter manager information
-promptManager()
 
+promptManager()
 
 function CreateTeam() {
  
@@ -29,9 +29,6 @@ inquirer.prompt(
 .then((color) => {
 
 let colorChoice = color.theme;
-
-
-
 
 htmlTemplate = htmlTemplate + `         </div>
             </body>

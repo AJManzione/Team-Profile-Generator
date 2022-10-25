@@ -6,7 +6,7 @@
             header {
                 width: 100vw;
                 height: 15vh;
-                background-color:Green;
+                background-color:Blue;
                 color: white;
                 font-size: 40px;
                 display: flex;
@@ -17,7 +17,7 @@
             
             .card-header {
                 font-size: 30px;
-                background-color:Green;
+                background-color:Blue;
             }
             
             .card {

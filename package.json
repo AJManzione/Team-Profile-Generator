@@ -1,4 +1,17 @@
 {
+  "name": "unsolved",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "email-templates": "^10.0.1",
     "inquirer": "^8.2.4",
