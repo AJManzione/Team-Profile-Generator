@@ -21,7 +21,11 @@ inquirer.prompt(
             type: 'list',
             message: "What theme would you like your page to be?!",
             name: 'theme',
-            choices: ["Red", "Blue", "Green"]
+            choices: ["Red", "Blue", "Green"],
+            validate: (value) => { 
+                if(value){return true} 
+                else {return "i need a value to continue"}
+            }
         }
     ]
 )
@@ -61,6 +65,10 @@ function newTeamMember() {
                 message: 'What team member would you like to add?',
                 name: 'newTeamMember',
                 choices: [ "Engineer", "Intern", "That's it, Create my Team!"],
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             }
         ]
     )
@@ -84,30 +92,50 @@ function promptManager() {
                 type: 'input',
                 message: "What is your Managers name?",
                 name: 'managerName',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
 
             {
                 type: 'input',
                 message: "What is the Manager's ID number?",
                 name: 'managerId',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
 
             {
                 type: 'input',
                 message: "What is the Manager's email?",
                 name: 'managerEmail',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
 
             {
                 type: 'input',
                 message: "What is the Manager's office number?",
-                name: 'managerOffice',  
+                name: 'managerOffice', 
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                } 
             }, 
 
             {
                 type: 'confirm',
                 message: 'Would you like to add another team member',
-                name: 'newTeam'
+                name: 'newTeam',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             }
         ]
     )
@@ -140,30 +168,50 @@ function promptEngineer() {
                 type: 'input',
                 message: "What is your Engineer's name?",
                 name: 'engineerName',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
 
             {
                 type: 'input',
                 message: "What is the Engineer's ID number?",
                 name: 'engineerId',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
   
             {
                 type: 'input',
                 message: "What is the Engineer's email?",
                 name: 'engineerEmail',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
   
             {
                 type: 'input',
                 message: "What is the Engineer's GitHub?",
                 name: 'engineerGithub',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
 
             {
                 type: 'confirm',
                 message: 'Would you like to add another team member',
-                name: 'newTeam'
+                name: 'newTeam',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             }
 
         ]
@@ -197,30 +245,50 @@ function promptIntern() {
                 type: 'input',
                 message: "What is your Intern's name?",
                 name: 'internName',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
 
             {
                 type: 'input',
                 message: "What is the Intern's ID number?",
                 name: 'internId',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
   
             {
                 type: 'input',
                 message: "What is the Engineer's email?",
                 name: 'internEmail',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
   
             {
                 type: 'input',
                 message: "What is the Engineer's school?",
                 name: 'internSchool',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             },
 
             {
                 type: 'confirm',
                 message: 'Would you like to add another team member',
-                name: 'newTeam'
+                name: 'newTeam',
+                validate: (value) => { 
+                    if(value){return true} 
+                    else {return "i need a value to continue"}
+                }
             }
         ]
     )
