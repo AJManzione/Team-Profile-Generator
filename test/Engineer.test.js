@@ -23,3 +23,9 @@ test('gets the engineer github', () => {
 
     expect(engineer.github).toBe('ajmanzione')
 })
+
+test('gets the engineer role', () => {
+    const engineer = new Engineer('Anthony', '5', 'gmail', 'ajmanzione')
+
+    expect(engineer.getRole).toBe('Engineer')
+})

@@ -18,3 +18,9 @@ test('returns the employee email', () => {
     expect(employee.email).toBe('imanzioneaj@gmail.com')
 })
 
+test('returns the employee role', () => {
+    const employee = new Employee('Anthony', '1', 'imanzioneaj@gmail.com')
+
+    expect(employee.getRole).toBe('Employee')
+})
+
