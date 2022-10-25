@@ -61,7 +61,7 @@ function newTeamMember() {
     inquirer.prompt(
         [
             {   
-                type: 'checkbox',
+                type: 'list',
                 message: 'What team member would you like to add?',
                 name: 'newTeamMember',
                 choices: [ "Engineer", "Intern", "That's it, Create my Team!"],
