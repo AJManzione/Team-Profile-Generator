@@ -27,5 +27,5 @@ test('get school information for the intern', () => {
 test('get role for the intern', () => {
     const intern = new Intern('Anthony', '1', 'gmail', 'FSU')
 
-    expect(intern.getRole).toBe('Intern')
+    expect(intern.getRole()).toBe('Intern')
 })
