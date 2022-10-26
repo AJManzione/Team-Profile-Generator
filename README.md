@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Team Profile Generator
 
-![alt text](.//dist/images/example.png)
+![alt text](./dist/images/example.png)
 
 ## The team profile generator allows a user to add an employee to their team and select between manager, engineer and intern and input data such as email's id numbers, 
 
