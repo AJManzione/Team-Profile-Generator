@@ -11,8 +11,18 @@
 4. [Collaboration](#contributing)
 5. [Contact](#contact) 
 
+## About this project
+
+
+
 # Technologies
-*HTML,CSS,JavaScript,Bootstrap,Node.js,Git,GitHub*
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Node.js
+- Git
+- GitHub
 
 # Installaton
 *You can install this program by first cloning the repository and then running npm install in the console followed by node index.js to run the application*
