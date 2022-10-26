@@ -263,7 +263,7 @@ function promptIntern() {
   
             {
                 type: 'input',
-                message: "What is the Engineer's email?",
+                message: "What is the Intern's email?",
                 name: 'internEmail',
                 validate: (value) => { 
                     if(value){return true} 
@@ -273,7 +273,7 @@ function promptIntern() {
   
             {
                 type: 'input',
-                message: "What is the Engineer's school?",
+                message: "What is the Intern's school?",
                 name: 'internSchool',
                 validate: (value) => { 
                     if(value){return true} 
