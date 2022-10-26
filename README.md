@@ -4,7 +4,8 @@
 
 ## The team profile generator allows a user to add an employee to their team and select between manager, engineer and intern and input data such as email's id numbers, 
 
-[Video walkthrough](https://www.example.com](https://www.youtube.com/watch?v=P6LUVCYvg_4)
+
+[Video Walkthrough] (https://www.example.com](https://www.youtube.com/watch?v=P6LUVCYvg_4&t=20s)
 
 
 ## Table of Contents
@@ -49,26 +50,30 @@
 - JavaScript
 - Bootstrap
 - Node.js
+- Inquirer & Jest modules
 - Git
 - GitHub
 
 # Installaton
-*You can install this program by first cloning the repository and then running npm install in the console followed by node index.js to run the application*
+- Node.js is required to run this application
+- First clone the repository 
+- Then running npm i in the console 
+- Last index.js to run the application
 
 # Usage
-*This project can be used to allow a user to create a team*
+*This project can be used by all who wish to use it*
 
 # License
 *MIT License*
 
 # Contributing
-*Me*
+*Anthony Manzione*
 
 # Contact: 
 [GitHub](https://github.com/Ajmanzione)
 
 # Tests:
-*Yes*
+*19 tests were run using jest*
 
 # Questions:
 Email: imanzioneaj@gmail.com
