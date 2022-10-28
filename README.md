@@ -7,7 +7,7 @@
 ## The team profile generator allows a user to add an employee to their team and select between manager, engineer and intern and input data such as email's id numbers, 
 
 
-[Video Walkthrough] (https://www.example.com](https://www.youtube.com/watch?v=P6LUVCYvg_4&t=20s)
+[Video Walkthrough](https://www.youtube.com/watch?v=P6LUVCYvg_4&t=20s)
 
 
 ## Table of Contents
