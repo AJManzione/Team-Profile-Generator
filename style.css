@@ -1,0 +1,27 @@
+
+            * {
+                color: white;
+                font-size: 20px;
+            }
+            
+            header {
+                width: 100vw;
+                height: 15vh;
+                background-color:Green;
+                color: white;
+                font-size: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 30px;
+            }
+            
+            .card-header {
+                font-size: 30px;
+                background-color:Green;
+            }
+            
+            .card {
+                padding: 5px;
+                margin: 20px;
+            }
